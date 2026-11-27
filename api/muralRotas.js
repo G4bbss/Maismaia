@@ -1,5 +1,5 @@
 import express from "express";
-import MuralController from "../controller/MuralController.js";
+import MuralController from "../controller/muralController.js";
 
 const router = express.Router();
 
