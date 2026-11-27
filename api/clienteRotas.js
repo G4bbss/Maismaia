@@ -1,6 +1,6 @@
 import express from "express";
 // Importamos todas as funções exportadas do controller (com a extensão .js obrigatória)
-import * as clienteController from "../controller/ClienteController.js";
+import * as clienteController from "../controller/clienteController.js";
 
 const router = express.Router();
 
