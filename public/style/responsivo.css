@@ -317,3 +317,29 @@ canvas {
         white-space: nowrap;
     }
 }
+
+
+
+
+
+
+
+@media (max-width: 900px) {
+    html,
+    body {
+        height: auto !important;
+        max-height: none !important;
+        min-height: 100dvh !important;
+        overflow-y: scroll !important;
+        overflow-x: hidden !important;
+        position: relative !important;
+        touch-action: pan-y !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    body > div:first-of-type {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
