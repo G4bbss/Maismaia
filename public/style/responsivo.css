@@ -163,25 +163,36 @@ canvas {
 }
 
 /* =========================================================================
-   2. TELAS DE LOGIN, CADASTRO E VERIFICAÇÃO (.container + .left-panel)
+2. TELAS DE LOGIN, CADASTRO E VERIFICAÇÃO (.container + .left-panel)
    ========================================================================= */
 
 @media (max-width: 768px) {
+    /* Destrava a altura fixa e libera a rolagem vertical */
+    html,
     body:has(.container .left-panel) {
-        padding: 16px 12px;
-        align-items: flex-start;
+        height: auto !important;
+        min-height: 100dvh !important;
+        overflow-y: auto !important;
+        padding: 16px 12px !important;
+        align-items: flex-start !important;
+        display: block !important;
     }
 
     .container {
         width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
         flex-direction: column !important;
-        margin: 10px auto;
+        margin: 0 auto 24px auto !important;
     }
 
     .left-panel,
     .right-panel {
         min-width: 0 !important;
         width: 100% !important;
+        height: auto !important;
         padding: 28px 20px !important;
         align-items: center !important;
         text-align: center !important;
@@ -199,11 +210,21 @@ canvas {
     .login-box,
     .cadastro-box {
         max-width: 100% !important;
+        width: 100% !important;
     }
 
     .options {
         flex-wrap: wrap;
-        gap: 8px;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    /* Garante que o botão do Google não estoure a largura da tela */
+    .google-btn-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        overflow: hidden;
     }
 }
 
