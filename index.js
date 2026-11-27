@@ -201,5 +201,5 @@ backend.get("/mural", exigirLogin, (req, res) => {
 // ===================== Inicialização =====================
 const PORT = process.env.PORT || 3000;
 backend.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+  console.log(`🚀 Servidor rodando em https://maiateste.onrender.com/:${PORT}`);
 });
