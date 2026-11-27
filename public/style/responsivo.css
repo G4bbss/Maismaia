@@ -20,9 +20,12 @@ body {
     html,
     body {
         height: auto !important;
+        max-height: none !important;
         min-height: 100dvh !important;
         overflow-y: auto !important;
-        position: static !important;
+        overflow-x: hidden !important;
+        position: relative !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 }
 
@@ -43,7 +46,7 @@ canvas {
 }
 
 /* =========================================================================
-   1. TELAS INTERNAS COM BARRA LATERAL (.app + .sidebar + .conteudo)
+1. TELAS INTERNAS COM BARRA LATERAL (.app + .sidebar + .conteudo)
    ========================================================================= */
 
 /* Botão hambúrguer da sidebar (oculto no desktop, ativado via script.js no mobile) */
@@ -178,12 +181,7 @@ canvas {
    ========================================================================= */
 
 @media (max-width: 768px) {
-    /* Destrava a altura fixa e libera a rolagem vertical */
-    html,
     body:has(.container .left-panel) {
-        height: auto !important;
-        min-height: 100dvh !important;
-        overflow-y: auto !important;
         padding: 16px 12px !important;
         align-items: flex-start !important;
         display: block !important;
@@ -240,19 +238,35 @@ canvas {
 }
 
 /* =========================================================================
-   3. MODAIS, WIDGET DA ASSISTENTE VIRTUAL E ACESSIBILIDADE NO CELULAR
+3. MODAIS, WIDGET DA ASSISTENTE VIRTUAL E ACESSIBILIDADE NO CELULAR
    ========================================================================= */
 
-@media (max-width: 600px) {
-    /* Modais */
+@media (max-width: 768px) {
+    /* Libera a rolagem nos overlays dos modais sem forçar abertura automática */
+    .modal-overlay,
+    .modal-backdrop,
+    #modalRecuperarSenha,
+    #modalPerfil,
+    #modalEscolhaPerfil {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        align-items: flex-start !important;
+        padding: 20px 12px !important;
+    }
+
     .modal-conteudo,
     .modal-content {
         width: 92% !important;
         max-width: 92% !important;
-        margin: 18% auto !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        margin: 16px auto 32px auto !important;
         padding: 22px 18px !important;
     }
+}
 
+@media (max-width: 600px) {
     /* Widget da Camila no canto inferior direito */
     .assistente-widget {
         right: 12px !important;
@@ -315,76 +329,5 @@ canvas {
         width: 100%;
         overflow-x: auto;
         white-space: nowrap;
-    }
-}
-
-
-
-
-
-
-
-@media (max-width: 900px) {
-    html,
-    body {
-        height: auto !important;
-        max-height: none !important;
-        min-height: 100dvh !important;
-        overflow-y: scroll !important;
-        overflow-x: hidden !important;
-        position: relative !important;
-        touch-action: pan-y !important;
-        -webkit-overflow-scrolling: touch !important;
-    }
-
-    body > div:first-of-type {
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================================================
-   CORREÇÃO DE ROLAGEM PARA MODAIS ALTOS (ESCOLHA DE PERFIL, ETC.)
-   ========================================================================= */
-@media (max-width: 768px) {
-    /* 1. Faz a camada escura externa do modal permitir rolagem vertical */
-    .modal-overlay,
-    [id*="modal" i],
-    [class*="modal-overlay" i],
-    [class*="modal-backdrop" i] {
-        position: fixed !important;
-        inset: 0 !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        display: flex !important;
-        align-items: flex-start !important; /* Impede que o topo do modal seja cortado */
-        justify-content: center !important;
-        padding: 20px 12px !important;
-    }
-
-    /* 2. Libera a altura da caixa branca do modal para ela crescer e rolar junto */
-    .modal-content,
-    .modal-conteudo,
-    [class*="modal-box" i],
-    [class*="modal-container" i] {
-        position: relative !important;
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-        margin: auto 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
     }
 }
