@@ -15,6 +15,17 @@ body {
     overflow-x: hidden;
 }
 
+/* Destrava a altura fixa e libera a rolagem vertical em qualquer página no celular */
+@media (max-width: 900px) {
+    html,
+    body {
+        height: auto !important;
+        min-height: 100dvh !important;
+        overflow-y: auto !important;
+        position: static !important;
+    }
+}
+
 img,
 video,
 iframe,
